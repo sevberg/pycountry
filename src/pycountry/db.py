@@ -45,8 +45,8 @@ class ExistingCountry(Country):
     flag: str
     name: str
     numeric: str
-    official_name: Optional[str]
-    common_name: Optional[str]
+    official_name: str | None
+    common_name: str | None
 
 
 class HistoricCountry(Country):
@@ -55,8 +55,8 @@ class HistoricCountry(Country):
     alpha_4: str
     name: str
     withdrawal_date: str
-    numeric: Optional[str]
-    comment: Optional[str]
+    numeric: str | None
+    comment: str | None
 
 
 class Subdivision(Data):
