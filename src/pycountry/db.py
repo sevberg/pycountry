@@ -1,8 +1,8 @@
 import json
 import logging
 import threading
-from collections.abc import Iterator
-from typing import Any, Callable, Generic, Optional, TypeVar, Union, cast
+from collections.abc import Callable, Iterator
+from typing import Any, Generic, TypeVar, cast
 
 logger = logging.getLogger("pycountry.db")
 
@@ -80,8 +80,8 @@ T = TypeVar("T", bound=Data)
 
 
 class Database(Generic[T]):
-    data_class: Union[type, str]
-    root_key: Optional[str] = None
+    data_class: type | str
+    root_key: str | None = None
     no_index: list[str] = []
 
     def __init__(self, filename: str) -> None:
@@ -181,9 +181,7 @@ class Database(Generic[T]):
         return len(self.objects)
 
     @lazy_load
-    def get(
-        self, *, default: Optional[T] = None, **kw: Optional[str]
-    ) -> Optional[T]:
+    def get(self, *, default: T | None = None, **kw: str | None) -> T | None:
         if len(kw) != 1:
             raise TypeError("Only one criteria may be given")
         field, value = kw.popitem()

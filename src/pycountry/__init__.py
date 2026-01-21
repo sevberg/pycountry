@@ -4,7 +4,7 @@ import os.path
 import unicodedata
 from importlib import metadata as _importlib_metadata
 from importlib import resources as _importlib_resources
-from typing import Generic, Optional, cast
+from typing import Generic, cast
 
 import pycountry.db
 
@@ -15,7 +15,7 @@ def resource_filename(package_or_requirement: str, resource_name: str) -> str:
     )
 
 
-def get_version(distribution_name: str) -> Optional[str]:
+def get_version(distribution_name: str) -> str | None:
     try:
         return _importlib_metadata.version(distribution_name)
     except _importlib_metadata.PackageNotFoundError:
@@ -25,7 +25,7 @@ def get_version(distribution_name: str) -> Optional[str]:
 # Variable annotations
 LOCALES_DIR: str = resource_filename("pycountry", "locales")
 DATABASE_DIR: str = resource_filename("pycountry", "databases")
-__version__: Optional[str] = get_version("pycountry")
+__version__: str | None = get_version("pycountry")
 
 
 def remove_accents(input_str: str) -> str:

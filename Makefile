@@ -3,7 +3,7 @@ VENV_DIR ?= .venv
 SYSTEM_PYTHON ?= python3
 
 # If poetry already exists, use it.  If not, we'll create a local venv for it
-POETRY ?= $(or $(shell command -v poetry 2>/dev/null),$(VENV_DIR)/bin/poetry)
+POETRY ?= $(or $(shell PATH=$(VENV_DIR)/bin:$${PATH} command -v poetry 2>/dev/null),$(VENV_DIR)/bin/poetry)
 # Calculate it once
 POETRY := $(POETRY)
 POETRY_READY_MARKER := .cache/poetry_ready
@@ -64,7 +64,7 @@ wheel: data
 .HELP: poetry.lock
 ## Ensure that the poetry.lock file is up to date
 poetry.lock: pyproject.toml | $(POETRY)
-	$(POETRY) lock --no-update
+	$(POETRY) lock
 
 .cache:
 	@mkdir .cache

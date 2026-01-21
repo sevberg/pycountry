@@ -4,11 +4,11 @@ Changes
 24.6.2.dev0 (Unreleased)
 ------------------------
 
-- Dropped support for end-of-life Python 3.8.
+- Dropped support for end-of-life Pythons 3.8 and 3.9.
 
-- Added explicit support for Python 3.13.
+- Added explicit support for Python 3.13 and 3.14.
 
-- Updated to iso-codes 4.18.0.
+- Updated to iso-codes 4.20.1.
 
 - Added support for matching initials in ``countries.search_fuzzy``.  For
   example, results for ``countries.search_fuzzy("UK")`` will now include

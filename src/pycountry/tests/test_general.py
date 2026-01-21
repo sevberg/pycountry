@@ -137,7 +137,7 @@ def test_query_subdivisions_of_country():
 
 
 def test_scripts():
-    assert len(pycountry.scripts) == 182
+    assert len(pycountry.scripts) == 226
     assert isinstance(list(pycountry.scripts)[0], pycountry.db.Data)
 
     latin = pycountry.scripts.get(name="Latin")
@@ -147,7 +147,7 @@ def test_scripts():
 
 
 def test_currencies():
-    assert len(pycountry.currencies) == 181
+    assert len(pycountry.currencies) == 178
     assert isinstance(list(pycountry.currencies)[0], pycountry.db.Data)
 
     argentine_peso = pycountry.currencies.get(alpha_3="ARS")
@@ -157,7 +157,7 @@ def test_currencies():
 
 
 def test_languages():
-    assert len(pycountry.languages) == 7910
+    assert len(pycountry.languages) == 7923
     assert isinstance(list(pycountry.languages)[0], pycountry.db.Data)
 
     aragonese = pycountry.languages.get(alpha_2="an")
